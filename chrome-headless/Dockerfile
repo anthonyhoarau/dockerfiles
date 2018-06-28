@@ -35,4 +35,4 @@ RUN chmod +x /usr/local/bin/dumb-init
 #USER pptruser
 #
 #ENTRYPOINT ["dumb-init", "--"]
-#CMD ["node"]
+CMD ["node"]
