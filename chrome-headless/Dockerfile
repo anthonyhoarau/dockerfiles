@@ -23,7 +23,7 @@ RUN chmod +x /usr/local/bin/dumb-init
 # Uncomment to skip the chromium download when installing puppeteer. If you do,
 # you'll need to launch puppeteer with:
 #     browser.launch({executablePath: 'google-chrome-unstable'})
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+# ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
 # Add user so we don't need --no-sandbox.
 #RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
@@ -34,4 +34,5 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 # Run everything after as non-privileged user.
 #USER pptruser
 #
-ENTRYPOINT ["dumb-init", "--"]
+#ENTRYPOINT ["dumb-init", "--"]
+#CMD ["node"]
