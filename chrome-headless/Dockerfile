@@ -34,5 +34,5 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 # Run everything after as non-privileged user.
 #USER pptruser
 #
-#ENTRYPOINT ["dumb-init", "--"]
+ENTRYPOINT ["dumb-init", "--"]
 #CMD ["google-chrome-unstable"]
