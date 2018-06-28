@@ -35,4 +35,4 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 #USER pptruser
 #
 ENTRYPOINT ["dumb-init", "--"]
-#CMD ["google-chrome-unstable"]
+CMD ["google-chrome-unstable"]
