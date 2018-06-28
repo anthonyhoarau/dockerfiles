@@ -42,7 +42,7 @@ jobs:
     steps:
       - checkout
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - run docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG $IMAGE_TAG
+      - run: docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG ./$IMAGE_TAG
 
 workflows:
   version: 2
