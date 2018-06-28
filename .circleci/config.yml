@@ -37,7 +37,9 @@ jobs:
   build:
     machine: true
     environment:
-      <<: *image_config
+      IMAGE_NAME: '' # name your image (no spaces please!)
+      IMAGE_TAG: '' # give your image a tag (no spaces please!)
+      DOCKER_FILE_PATH: '' # give the dockerfile path (chrome-headless)
 
     steps:
       - checkout
