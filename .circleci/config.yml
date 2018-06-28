@@ -3,11 +3,11 @@ image_config: &image_config
   # either as project-specific environment variables
   # or as resources in your organization's org-global Context
 
-  IMAGE_NAME: '' # name your image (no spaces please!)
+  IMAGE_NAME: mrv # name your image (no spaces please!)
 
-  IMAGE_TAG: '' # give your image a tag (no spaces please!)
+  IMAGE_TAG: chrome-headless # give your image a tag (no spaces please!)
 
-  DOCKER_FILE_PATH: '' # give the dockerfile path (chrome-headless)
+  # DOCKER_FILE_PATH: '' # give the dockerfile path (chrome-headless)
 
   # NOTE: if you're modifying this config.yml file manually
   # rather than using the included setup script,
@@ -37,14 +37,12 @@ jobs:
   build:
     machine: true
     environment:
-      IMAGE_NAME: test # name your image (no spaces please!)
-      IMAGE_TAG: test # give your image a tag (no spaces please!)
-      DOCKER_FILE_PATH: test # give the dockerfile path (chrome-headless)
+      <<: *image_config
 
     steps:
       - checkout
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      #- run docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG $DOCKER_FILE_PATH
+      #- run docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG $IMAGE_TAG
 
 workflows:
   version: 2
