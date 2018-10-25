@@ -34,7 +34,20 @@ image_config: &image_config
 
 version: 2.1
 jobs:
+  test:
+    machine: true
+    environment:
+      <<: *image_config
+
+    steps:
+    - checkout
+    - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - run: docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG ./$IMAGE_TAG
+
   build:
+    branches:
+      only:
+        - master
     machine: true
     environment:
       <<: *image_config
@@ -43,14 +56,11 @@ jobs:
       - checkout
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - run: docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG ./$IMAGE_TAG
-      - run:
-          command: |
-          if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            docker push $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG && sleep 10
-          fi
+      - run: docker push $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG && sleep 10
 
 workflows:
   version: 2.1
   dockerfile_wizard:
     jobs:
+      - test
       - build
