@@ -34,6 +34,16 @@ image_config: &image_config
 
 version: 2
 jobs:
+  test:
+    machine: true
+    environment:
+      <<: *image_config
+
+    steps:
+    - checkout
+    - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - run: docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG ./$IMAGE_TAG
+
   build:
     machine: true
     environment:
@@ -47,6 +57,12 @@ jobs:
 
 workflows:
   version: 2
-  dockerfile_wizard:
+  dockerfile-wizard:
     jobs:
-      - build
+      - test
+      - build:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
