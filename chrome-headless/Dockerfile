@@ -65,15 +65,18 @@ RUN set -ex \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz
 # END INSTALL NODE
 
-#Install git flow
-RUN apt-get update
-RUN apt-get install -y git-flow
-
-# Install Cypress dependencies
-RUN apt-get install -y xvfb
-
-# See https://crbug.com/795759
-RUN apt-get update && apt-get install -yq libgconf-2-4
+#Install git flow and Cypress dependencies
+RUN apt-get update && \
+    apt-get install -y \
+        git-flow \
+        libgtk2.0-0 \
+        libnotify-dev \
+        # See https://crbug.com/795759
+        libgconf-2-4 \
+        libnss3 \
+        libxss1 \
+        libasound2 \
+        xvfb
 
 # Install latest chrome dev package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others)
 # Note: this installs the necessary libs to make the bundled version of Chromium that Puppeteer
