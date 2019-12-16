@@ -70,7 +70,7 @@ RUN apt-get update
 RUN apt-get install -y git-flow
 
 # Install Cypress dependencies
-RUN apt-get install xvfb
+RUN apt-get install -y xvfb
 
 # See https://crbug.com/795759
 RUN apt-get update && apt-get install -yq libgconf-2-4
