@@ -65,9 +65,12 @@ RUN set -ex \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz
 # END INSTALL NODE
 
-#Install git glow
+#Install git flow
 RUN apt-get update
 RUN apt-get install -y git-flow
+
+# Install Cypress dependencies
+RUN apt-get install xvfb
 
 # See https://crbug.com/795759
 RUN apt-get update && apt-get install -yq libgconf-2-4
