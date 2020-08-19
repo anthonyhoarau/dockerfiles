@@ -1,4 +1,4 @@
-FROM node:10.16.0
+FROM node:12.18.3
 
 #Install git flow and Cypress dependencies
 RUN apt-get update && \
