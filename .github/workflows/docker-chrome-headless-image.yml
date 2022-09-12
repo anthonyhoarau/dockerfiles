@@ -18,4 +18,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build ./chrome-headless --file Dockerfile --tag llioss/node-chrome-headless:$NODE_IMAGE_VERSION --build-arg TARGET_NODE_VERSION=$NODE_IMAGE_VERSION
+      run: docker build ./chrome-headless --tag llioss/node-chrome-headless:$NODE_IMAGE_VERSION --build-arg TARGET_NODE_VERSION=$NODE_IMAGE_VERSION
