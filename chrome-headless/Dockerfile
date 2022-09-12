@@ -1,5 +1,4 @@
 ARG TARGET_NODE_VERSION=lts
-ARG CHROME_VERSION="google-chrome-stable"
 
 FROM node:${TARGET_NODE_VERSION}
 
