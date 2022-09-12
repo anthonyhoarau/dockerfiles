@@ -1,18 +1,13 @@
 name: Docker Chrome Headless Image CI
 
+env:
+  NODE_IMAGE_VERSION: lts
+
 on:
   push:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
-  workflow_call:
-    inputs:
-      node_image:
-        description: 'Node image version from official node docker hub'
-        default: 'lts'
-        required: false
-        type: string
 
 jobs:
 
@@ -24,7 +19,7 @@ jobs:
         with:
           node_image: 'lts'
       - name: Build image test
-        run: docker build ./chrome-headless --tag llioss/node-chrome-headless:${{ inputs.node_image }} --build-arg TARGET_NODE_VERSION=${{ inputs.node_image }}
+        run: docker build ./chrome-headless --tag llioss/node-chrome-headless:${{ env.NODE_IMAGE_VERSION }} --build-arg TARGET_NODE_VERSION=${{ env.NODE_IMAGE_VERSION }}
 
   build:
     if: ${{ github.ref == 'refs/heads/master' }}
@@ -37,4 +32,4 @@ jobs:
       run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
 
     - name: Publish Docker image
-      run: docker push llioss/node-chrome-headless:${{ inputs.node_image }}
+      run: docker push llioss/node-chrome-headless:${{ env.NODE_IMAGE_VERSION }}
