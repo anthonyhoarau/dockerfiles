@@ -1,5 +1,5 @@
 # dockerfiles
 
-[![CircleCI](https://circleci.com/gh/llioss/dockerfiles.svg?style=svg)](https://circleci.com/gh/llioss/dockerfiles)
+![example workflow](https://github.com/llioss/dockerfiles/actions/workflows/docker-chrome-headless-publish.yml/badge.svg)
 
 Some Docker files
