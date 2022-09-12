@@ -1,4 +1,4 @@
-FROM node:${TARGET_NODE_VERSION}
+FROM node:$TARGET_NODE_VERSION
 
 #Install git flow and Cypress dependencies
 RUN apt-get update && \
