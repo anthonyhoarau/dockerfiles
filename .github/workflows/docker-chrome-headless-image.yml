@@ -1,5 +1,8 @@
 name: Docker Chrome Headless Image CI
 
+env:
+  NODE_IMAGE_VERSION: lts-slim
+
 on:
   push:
     branches: [ "master" ]
@@ -15,4 +18,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build ./chrome-headless --file Dockerfile --tag llioss/node-chrome-headless:${{inputs.node_image}} --build-arg TARGET_NODE_VERSION=${{inputs.node_image}}
+      run: docker build ./chrome-headless --file Dockerfile --tag llioss/node-chrome-headless:$NODE_IMAGE_VERSION --build-arg TARGET_NODE_VERSION=$NODE_IMAGE_VERSION
