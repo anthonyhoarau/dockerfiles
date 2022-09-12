@@ -15,7 +15,5 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          node_image: 'lts'
       - name: Build image test
         run: docker build ./chrome-headless --tag llioss/node-chrome-headless:${{ env.NODE_IMAGE_VERSION }} --build-arg TARGET_NODE_VERSION=${{ env.NODE_IMAGE_VERSION }}
