@@ -5,7 +5,7 @@ image_config: &image_config
 
   IMAGE_NAME: mrv # name your image (no spaces please!)
 
-  IMAGE_TAG: chrome-headless-node12 # give your image a tag (no spaces please!)
+  IMAGE_TAG: chrome-headless-node16 # give your image a tag (no spaces please!)
 
   DOCKER_FILE_PATH: chrome-headless # give the dockerfile path (chrome-headless)
 
