@@ -1,7 +1,7 @@
 name: Docker Chrome Headless Image CI
 
 env:
-  NODE_IMAGE_VERSION: lts-slim
+  NODE_IMAGE_VERSION: lts
 
 on:
   push:
